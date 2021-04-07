@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>BirNot</title>
+</head>
+<body>
+
+    <script src="Scripts/jquery-3.6.0.min.js"></script>
+    <script>
+        $.ajax({
+            type: "get",
+            url: "https://localhost:44396/api/Values",
+            headers: {
+                Authorization: "Bearer Ce2CekkcXZx9GN_cEOC_tMVRFW10WUL36LdZgQe9kJBkx-Q7VuQ05yxo4BLw4wyf4yi29Q2SLpu4JQJOXXsjnxyWjiYASxJj-OP_LvIjSdHurAYbrHfNv9JlUa-96insns2c9PmK1-DGTZPH5NoFbOEwdL5SuT2UwirTiYTcN9LEemw_JD_MlDPmULGcYrU6mY4vfzeXE-_MDOMoLnXe1wcGDjG3YM7dxmQI7BENI5N4aPQAzvlT2EXle0i_C4O5foIBai6_ZE8N5i6v_Q6Acv53p3IdWCdJh_d_dv24B91OUlNTwoHAI6Yl3SR7te_josfNCBZ2jNj_TORFzz7xFLsBlSeC6_QIfuLqO9__tzV1fcap4VRQPzRa3hGoI1AvZf99vU7UVxc2UqddS16Wt1WuOrhR3Pdswix5kMiUwpkcYWIKt0yfB10xmy1_N8AIvLul8Z0w00Ili5M8R44Q5GB67dcp_afqY-mN2qhlqwLmT1EcggVdVfTxdzoKEq3v"
+            },
+            success: function (data) {
+                alert(data[0] + " ve " + data[1]);
+            }
+        });
+    </script>
+</body>
+</html>
