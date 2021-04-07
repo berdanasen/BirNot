@@ -3,20 +3,60 @@
 <head>
     <meta charset="utf-8" />
     <title>BirNot</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
 </head>
 <body>
+    <div id="uyelikSayfa">
+        <form class="form-signin giris">
+            <img class="mb-4" src="Images/logo.png" alt="" width="72" height="72">
+            <!--<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>-->
+            <div class="mb-3">
+                <div class="btn-group" id="girisKayit">
+                    <a href="#" class="btn btn-sm btn-outline-secondary active" data-tur="giris">Giriş Yap</a>
+                    <a href="#" class="btn btn-sm btn-outline-secondary" data-tur="kayit">Kayıt Ol</a>
+                </div>
+            </div>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
+            <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required>
+            <div class="checkbox mb-3 remember-me-div">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Giriş Yap</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2017-2021</p>
+        </form>
+    </div>
+    <div id="notlarSayfa" style="display: none"></div>
 
     <script src="Scripts/jquery-3.6.0.min.js"></script>
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
     <script>
-        $.ajax({
-            type: "get",
-            url: "https://localhost:44396/api/Values",
-            headers: {
-                Authorization: "Bearer Ce2CekkcXZx9GN_cEOC_tMVRFW10WUL36LdZgQe9kJBkx-Q7VuQ05yxo4BLw4wyf4yi29Q2SLpu4JQJOXXsjnxyWjiYASxJj-OP_LvIjSdHurAYbrHfNv9JlUa-96insns2c9PmK1-DGTZPH5NoFbOEwdL5SuT2UwirTiYTcN9LEemw_JD_MlDPmULGcYrU6mY4vfzeXE-_MDOMoLnXe1wcGDjG3YM7dxmQI7BENI5N4aPQAzvlT2EXle0i_C4O5foIBai6_ZE8N5i6v_Q6Acv53p3IdWCdJh_d_dv24B91OUlNTwoHAI6Yl3SR7te_josfNCBZ2jNj_TORFzz7xFLsBlSeC6_QIfuLqO9__tzV1fcap4VRQPzRa3hGoI1AvZf99vU7UVxc2UqddS16Wt1WuOrhR3Pdswix5kMiUwpkcYWIKt0yfB10xmy1_N8AIvLul8Z0w00Ili5M8R44Q5GB67dcp_afqY-mN2qhlqwLmT1EcggVdVfTxdzoKEq3v"
-            },
-            success: function (data) {
-                alert(data[0] + " ve " + data[1]);
+        $("#girisKayit > a").click(function (event) {
+            event.preventDefault();
+            var a = this;
+            $(a).addClass("active");
+            $(a).siblings("a").removeClass("active");
+            var tur = $(this).data("tur");
+            $('.form-signin button[type="submit"]').text(
+                tur == "giris" ? "Giriş Yap" : "Kayıt Ol"
+            );
+
+            switch (tur) {
+                case "giris":
+                    $(".form-signin").removeClass("kayit").addClass("giris");
+                    
+                    break;
+                case "kayit":
+                    $(".form-signin").removeClass("giris").addClass("kayit");
+                    break;
             }
+            
         });
     </script>
 </body>
