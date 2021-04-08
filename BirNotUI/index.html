@@ -100,7 +100,10 @@
                     success: function (data) {
                         var rememberMe = $("#inputRememberMe").prop("checked");
                         var storage = rememberMe ? localStorage : sessionStorage;
-                        console.log(rememberMe);
+                        girisVerileriniTemizle();
+                        storage["login"] = JSON.stringify(data);
+                        toastr.success("Başarıyla giriş yaptınız.", "Merhaba " + data.userName);
+                        frm.reset();
                     },
                     error: function (xhr, status, error) {
                         showErrors(xhr.responseJSON);
@@ -109,6 +112,11 @@
             }
 
         });
+
+        function girisVerileriniTemizle() {
+            localStorage.removeItem("login");
+            sessionStorage.removeItem("login");
+        }
 
         function showErrors(data) {
             if (data.ModelState) {
